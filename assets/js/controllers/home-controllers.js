@@ -1,6 +1,27 @@
 planeTicketsApp.controller('MainController', ['$scope', 'ClientsFactory', 'FliesFactory',
     function($scope, clientsFactory, fliesFactory) {
+
+        //Modale
+        // $scope.modalConfirmOptions = {
+        //     title: 'Suppression client',
+        //     msg: 'Êtes-vous sûr de vouloir supprimer le client ?',
+        //     action: $scope.deleteUser
+        // };
+
+        // $scope.deleteUser = function(index) {
+        //     alert('deleteUser');
+        //     // $scope.tabArray.splice($scope.currentIndex, 1);
+        //     $scope.modalOpen = false;
+        // };
+
         // Initialisation variables $scope.newClients et $scope.flies
+        $scope.newClients = [];
+        $scope.flies = [];
+
+
+
+
+
         if (typeof localStorage != 'undefined') {
             // Récupération de la valeur dans web storage
             $scope.newClients = localStorage.getItem('newClients');
@@ -48,33 +69,44 @@ planeTicketsApp.controller('MainController', ['$scope', 'ClientsFactory', 'Flies
 
         //Clients
         $scope.formClient = {}; //Variable pour stockage temporaire du formulaire ajout/édition de clients
+        $scope.showEditClient = false; // Variable pour montrer le formulaire edit Client
         $scope.addClients = function() { //Ajouter
             $scope.newClients = clientsFactory.addClient($scope.formClient, $scope.newClients);
+            $scope.formClient = {};
         }
         $scope.delClients = function(index) { //Supprimer
             $scope.newClients = clientsFactory.delCLient(index, $scope.newClients);
         }
         $scope.editClients = function(index) { //Editer
             $scope.formClient = clientsFactory.editClient(index, $scope.newClients);
+            $scope.showEditClient = true;
         }
         $scope.saveClients = function() { //Sauvegarde des infos de l'édition
             $scope.newClients = clientsFactory.saveClient($scope.formClient, $scope.newClients);
+            $scope.showEditClient = false;
+            $scope.formClient = {};
         }
 
         //Flies
         $scope.formFly = {}; //Variable pour stockage temporaire du formulaire ajout/édition de vols
+        $scope.showEditFly = false; //Variable pour montrer le formulaire edit Fly
         $scope.addFlies = function() { //Ajouter
             $scope.flies = fliesFactory.addFly($scope.formFly, $scope.flies);
+            $scope.formFly = {};
         }
         $scope.delFlies = function(index) { //Supprimer
             $scope.flies = fliesFactory.delFly(index, $scope.flies);
         }
         $scope.editFlies = function(index) { //Editer
             $scope.formFly = fliesFactory.editFly(index, $scope.flies);
+            $scope.showEditFly = true;
         }
         $scope.saveFlies = function() { //Sauvegarde des infos de l'édition
             $scope.flies = fliesFactory.saveFly($scope.formFly, $scope.flies);
+            $scope.showEditFly = false;
+            $scope.formFly = {};
         }
+
 
     }
 ]);

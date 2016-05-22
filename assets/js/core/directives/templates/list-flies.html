@@ -1,0 +1,27 @@
+<div class="table-responsive">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>id</th>
+				<th>Departing Location</th>
+				<th> Departing Time</th>
+				<th>Landing Location</th>
+				<th>Landing Time</th>
+				<th>Edit/Delete</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="fly in fliesList track by fly.id">
+				<td ng-bind="fly.id"></td>
+				<td ng-bind="fly.deparLoc"></td>
+				<td ng-bind="fly.deparTime| date:'short'"></td>
+				<td ng-bind="fly.landLoc"></td>
+				<td ng-bind="fly.landTime| date:'short'"></td>
+				<td class="btn-group btn-group-xs">
+					<button type="button" class="btn btn-warning" ng-click="$parent.editFly({id: $index})">Edit</button>
+					<button type="button" class="btn btn-danger" ng-click="$parent.deleteFly({id: $index})">Delete</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

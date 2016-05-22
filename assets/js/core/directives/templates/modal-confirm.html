@@ -1,0 +1,12 @@
+<div ng-click="modalOpen=true">
+	<span ng-transclude></span>
+
+	<div class="modal-tp" ng-show="modalOpen">
+		<article>
+			<h1 ng-bind="label"></h1>
+			<button class="btn btn-primary" ng-click="modalAction()">OK</button>
+			<button class="btn btn-danger" ng-click="modalOpen=false">NO!</button>
+			<h2 ng-bind="modalOpen"></h2>
+		</article>
+	</div>
+</div>

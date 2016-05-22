@@ -1,0 +1,30 @@
+<form class="form" ng-submit="formAddAction()"> <!--Appel de la méthode-->
+	<fieldset>
+		<legend>Register Client</legend>
+		<p class="form-group">
+			<label for="clientName">Name</label>
+			<input required type="text" id="clientName" placeholder="Elizabeth" class="form-control" ng-model="addNewClient.name">
+		</p>
+		<p class="form-group">
+			<label for="clientsurname">Surname</label>
+			<input required type="text" id="clientsurname" placeholder="Bennet" class="form-control" ng-model="addNewClient.surname">
+		</p>
+		<p class="form-group">
+			<label for="clientPhone">Phone</label>
+			<input required type="tel" id="clientPhone" placeholder="0414748798" class="form-control" ng-model="addNewClient.phone">
+		</p>
+		<p class="form-group">
+			<label for="clientEmail">email</label>
+			<input required type="email" id="clientEmail" placeholder="eli.bennet@janeausten.com" class="form-control" ng-model="addNewClient.email">
+		</p>
+		<p class="form-group">
+			<label for="clientFlies">Fly booked</label>
+			<select name="fliesList" id="clientFlies" class="form-control" ng-model="addNewClient.fly">
+				<optgroup>
+					<option ng-repeat="fly in fliesList" value="{{fly.id}}">{{fly.id}}</option>
+				</optgroup>
+			</select>
+		</p>
+	</fieldset>
+	<button type="submit" class="btn btn-lg btn-primary">Save Client</button>
+</form>

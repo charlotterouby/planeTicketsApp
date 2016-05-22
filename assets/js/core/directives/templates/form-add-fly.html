@@ -1,0 +1,26 @@
+<form action="" class="form" ng-submit="formAction()">
+	<fieldset>
+		<legend>Register Fly</legend>
+		<p class="form-group">
+			<label for="flyId">Id</label>
+			<input required id="flyId" type="text" placeholder="AF01CDGMP" class="form-control" ng-model="addNewFly.id">
+		</p>
+		<p class="form-group">
+			<label for="deparLoc">Departing Location</label>
+			<input required id="deparLoc" type="text" placeholder="Paris, Charles de Gaulles" class="form-control" ng-model="addNewFly.deparLoc">
+		</p>
+		<p class="form-group">
+			<label for="deparTime">Departing Time</label>
+			<input required id="deparTime" type="datetime-local" placeholder="2016-05-21T12:25:43" class="form-control" ng-model="addNewFly.deparTime">
+		</p>
+		<p class="form-group">
+			<label for="landLoc">Landing Location</label>
+			<input required id="landLoc" type="text" placeholder="Marseille Provence" class="form-control" ng-model="addNewFly.landLoc">
+		</p>
+		<p class="form-group">
+			<label for="landTime">Landing Time</label>
+			<input required id="landTime" type="datetime-local" placeholder="2016-05-21T13:25:43" class="form-control" ng-model="addNewFly.landTime">
+		</p>
+	</fieldset>
+	<button type="submit" class="btn btn-lg btn-primary">Save Fly</button>
+</form>

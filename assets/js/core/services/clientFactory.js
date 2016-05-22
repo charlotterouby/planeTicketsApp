@@ -1,7 +1,7 @@
 planeTicketsApp.factory('ClientsFactory', ['$http', '$q',
     function($http, $q) {
         var clients = {
-            'clientsList': false,
+            clientsList: false,
             'getListClients': function() {
                 var deffered = $q.defer();
                 $http.get('assets/js/planes.json').success(

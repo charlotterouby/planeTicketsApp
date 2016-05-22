@@ -1,7 +1,54 @@
+/*--------------------
+	Formulaires
+--------------------*/
 form{
 	background-color: #1B6262;
 	padding: 2vw;
 }
 legend, label{
 	color: #fff;
+}
+
+/*--------------------
+	Modale
+--------------------*/
+.modal-tp{
+	z-index: 0;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: rgba(0,0,0,0.75);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.modal-tp article {
+	background-color: #fff;
+	padding: 15px;
+	min-height: 25vh;
+}
+/*--------------------
+	Sections Clients List & Flies List
+--------------------*/
+#clientsList, #fliesList {
+	z-index: 10;
+}
+
+/*--------------------
+	Header
+--------------------*/
+.page-header{
+	z-index: 10;
+	min-height: 50vh;
+	margin:0;
+	background: url(http://unsplash.com/photos/YvCg5X3pWzc/download) top no-repeat;
+	background-size: cover;
+	color: #fff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
 }

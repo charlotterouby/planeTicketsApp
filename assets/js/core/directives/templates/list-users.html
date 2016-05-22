@@ -1,0 +1,27 @@
+<div class="table-responsive">
+	<table summary="users list" class="table table-striped">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Surname</th>
+				<th>Phone</th>
+				<th>Email</th>
+				<th>Flies Booked</th>
+				<th>Edit/Delete</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="user in usersList track by $index">
+				<td ng-bind="user.name"></td>
+				<td ng-bind="user.surname"></td>
+				<td ng-bind="user.phone"></td>
+				<td ng-bind="user.email"></td>
+				<td ng-bind="user.fly"></td>
+				<td class="btn-group btn-group-xs">
+					<button type="button" class="btn btn-warning" ng-click="$parent.editUser({id: $index})">Edit</button>
+					<button type="button" class="btn btn-danger" ng-click="$parent.deleteUser({id: $index})">Delete</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

@@ -51,6 +51,7 @@ planeTicketsApp.factory('FliesFactory', ['$http', '$q',
                 var flies = flies;
                 flies[formFly.index] = formFly;
                 localStorage.setItem("flies", JSON.stringify(flies));
+                formFly = {};
                 return flies;
             }
         };
