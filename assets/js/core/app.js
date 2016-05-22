@@ -1,0 +1,1 @@
+var planeTicketsApp = angular.module('planeTicketsApp', []);

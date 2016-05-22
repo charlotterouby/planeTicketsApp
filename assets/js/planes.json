@@ -1,0 +1,52 @@
+{
+    "flies": [{
+        "id": "AF01CDGMP",
+        "deparLoc": "Paris, Charles de Gaulles",
+        "deparTime": "2016-05-21T12:25:43",
+        "landLoc": "Marseille Provence",
+        "landTime": "2016-05-21T13:25:43"
+    }, {
+        "id": "AF02MPCDG",
+        "deparLoc": "Marseille Provence",
+        "deparTime": "2016-05-21T14:25:43",
+        "landLoc": "Paris, Charles de Gaulles",
+        "landTime": "2016-05-21T15:25:43"
+    }, {
+        "id": "AF03MPPO",
+        "deparLoc": "Marseille Provence",
+        "deparTime": "2016-05-21T16:25:43",
+        "landLoc": "Paris Orly",
+        "landTime": "2016-05-21T17:25:43"
+    }],
+    "clients": [{
+        "name": "John",
+        "surname": "Doe",
+        "phone": "0442157578",
+        "email": "john.doe@gmail.com",
+        "fly": "AF01CDGMP"
+    }, {
+        "name": "Clara",
+        "surname": "Santiago",
+        "phone": "0442157578",
+        "email": "clara.santiago@gmail.com",
+        "fly": "AF02MPCDG"
+    }, {
+        "name": "François",
+        "surname": "Tavernier",
+        "phone": "0442157578",
+        "email": "françois.tavernier@gmail.com",
+        "fly": "AF01CDGMP"
+    }, {
+        "name": "Léa",
+        "surname": "Casta",
+        "phone": "0442157578",
+        "email": "lea.casta@gmail.com",
+        "fly": "AF03MPPO"
+    }, {
+        "name": "Jane",
+        "surname": "Austen",
+        "phone": "0442157578",
+        "email": "jane.austen@gmail.com",
+        "fly": "AF02MPCDG"
+    }]
+}

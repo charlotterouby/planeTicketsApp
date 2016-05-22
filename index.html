@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<title>Plane Tickets</title>
+	
+	<!-- stylesheets -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body ng-app="planeTicketsApp">
+	<div ng-controller="MainController" class="container">
+		<h1>Plane Tickets</h1>
+
+		<!-- clients List -->
+		<section id="clientsList">
+			<h2>Clients List</h2>
+			<!-- forms -->
+			<div class="row">
+				<!-- form add new Client -->
+				<form class="form col-xs-12 col-md-6" ng-submit="addClients()">
+					<fieldset>
+						<legend>Add / Edit Clients</legend>
+						<p class="form-group">
+							<label for="clientName">Name</label>
+							<input required type="text" id="clientName" placeholder="Elizabeth" class="form-control" 
+									ng-model="formClient.name">
+						</p>
+						<p class="form-group">
+							<label for="clientsurname">Surname</label>
+							<input required type="text" id="clientsurname" placeholder="Bennet" class="form-control" 
+									ng-model="formClient.surname">
+						</p>
+						<p class="form-group">
+							<label for="clientPhone">Phone</label>
+							<input required type="tel" id="clientPhone" placeholder="0414748798" class="form-control" 
+									ng-model="formClient.phone">
+						</p>
+						<p class="form-group">
+							<label for="clientEmail">email</label>
+							<input required type="email" id="clientEmail" placeholder="eli.bennet@janeausten.com" 
+									class="form-control" ng-model="formClient.email">
+						</p>
+						<p class="form-group">
+							<label for="clientFlies">Fly booked</label>
+							<select name="fliesList" id="clientFlies" class="form-control" ng-model="formClient.fly">
+								<optgroup ng-repeat="fly in flies">
+									<option value="{{fly.id}}" ng-bind="fly.id"></option>
+								</optgroup>
+							</select>
+						</p>
+					</fieldset>
+					<button type="submit" class="btn btn-lg btn-primary">Add New Client</button>
+					<button type="button" class="btn btn-lg btn-secondary" ng-click="saveClients()">Save Client</button>
+				</form>
+				<!-- end of form add new client -->
+
+				<!-- form filters clients list -->
+				<form class="form col-xs-12 col-md-6">
+					<fieldset>
+						<legend>Filtres</legend>
+						<p class="form-group">
+							<label>search by name</label>
+							<input type="text" class="form-control" ng-model="searchName">
+						</p>
+						<p class="form-group">
+							<label>search by surname</label>
+							<input type="text" class="form-control" ng-model="searchSurname">
+						</p>
+						<p class="form-group">
+							<label>search by Flies</label>
+							<input type="text" class="form-control" ng-model="searchFly">
+						</p>
+					</fieldset>
+				</form>
+				<!-- end of form filters clients list -->
+			</div>
+			<!-- end of forms -->
+
+
+			<!-- list of clients/clients -->
+			<div class="row">
+				<div class="table-responsive">
+					<table summary="clients list" class="table table-striped">
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Surname</th>
+								<th>Phone</th>
+								<th>Email</th>
+								<th>Flies Booked</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="client in newClients | filter: {'name': searchName, 'surname': searchSurname, 'fly': searchFly} track by $index">
+								<td ng-bind="client.name"></td>
+								<td ng-bind="client.surname"></td>
+								<td ng-bind="client.phone"></td>
+								<td ng-bind="client.email"></td>
+								<td ng-bind="client.fly"></td>
+								<td class="btn-group btn-group-xs">
+									<button type="button" class="btn btn-warning" ng-click="$parent.editClients($index)">
+										Edit
+									</button>
+									<button type="button" class="btn btn-danger" ng-click="$parent.delClients($index)">
+										Delete
+									</button>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<!-- end of clients/clients list -->
+		</section>
+		<hr/>
+
+		<!-- Flies List -->
+		<section id="fliesList">
+		<h2>Flies List</h2>
+		<div class="row">
+		<!-- form add new fly -->
+			<form action="" class="form col-xs-12 col-md-6" ng-submit="addFlies()">
+				<fieldset>
+				<legend>Add / Edit Flies</legend>
+					<p class="form-group">
+						<label for="flyId">Id</label>
+						<input required id="flyId" type="text" placeholder="AF01CDGMP" class="form-control" ng-model="formFly.id">
+					</p>
+					<p class="form-group">
+						<label for="deparLoc">Departing Location</label>
+						<input required id="deparLoc" type="text" placeholder="Paris, Charles de Gaulles" class="form-control" ng-model="formFly.deparLoc">
+					</p>
+					<p class="form-group">
+						<label for="deparTime">Departing Time</label>
+						<input required id="deparTime" type="datetime-local" placeholder="2016-05-21T12:25:43" class="form-control" ng-model="formFly.deparTime">
+					</p>
+					<p class="form-group">
+						<label for="landLoc">Landing Location</label>
+						<input required id="landLoc" type="text" placeholder="Marseille Provence" class="form-control" ng-model="formFly.landLoc">
+					</p>
+					<p class="form-group">
+						<label for="landTime">Landing Time</label>
+						<input required id="landTime" type="datetime-local" placeholder="2016-05-21T13:25:43" class="form-control" ng-model="formFly.landTime">
+					</p>
+				</fieldset>
+				<button type="submit" class="btn btn-lg btn-primary">Add new fly</button>
+				<button type="button" class="btn btn-lg btn-secondary" ng-click="saveFlies()">Save Fly</button>
+			</form>
+			<!-- end form add fly -->
+			<!-- form filters flies -->
+			<form class="form col-xs-12 col-md-6">
+				<fieldset>
+					<legend>Filtres</legend>
+					<p class="form-group">
+						<label>search by id</label>
+						<input type="text" class="form-control" ng-model="searchFlyId">
+					</p>
+					<p class="form-group">
+						<label>search by Departing Location</label>
+						<input type="text" class="form-control" ng-model="searchLocation">
+						<!-- @ faire fonctionner le filtre par location -->
+					</p>
+					<p class="form-group">
+						<label>search by Departing Time</label>
+						<input type="datetime-local" class="form-control" ng-model="searchTime" disabled>
+						<!-- @ faire fonctionner le filtre par date -->
+					</p>
+				</fieldset>
+			</form>
+			<!-- end filters flies -->
+			</div>
+			<div class="row">
+				<div class="table-responsive">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>id</th>
+								<th>Departing Location</th>
+								<th> Departing Time</th>
+								<th>Landing Location</th>
+								<th>Landing Time</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="fly in flies | filter: {'id': searchFlyId, 'deparLoc': searchLocation} track by fly.id">
+								<td ng-bind="fly.id"></td>
+								<td ng-bind="fly.deparLoc"></td>
+								<td ng-bind="fly.deparTime| date:'short'"></td>
+								<td ng-bind="fly.landLoc"></td>
+								<td ng-bind="fly.landTime| date:'short'"></td>
+								<td class="btn-group btn-group-xs">
+									<button type="button" class="btn btn-warning" ng-click="$parent.editFlies($index)">
+										Edit
+									</button>
+									<button type="button" class="btn btn-danger" ng-click="$parent.delFlies($index)">
+										Delete
+									</button>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</section>
+		
+	</div>
+	
+	<!-- Javascript -->
+		<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script> -->
+		<script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
+		<script type="text/javascript" src="assets/js/core/app.js"></script>
+		<script type="text/javascript" src="assets/js/core/services/clientFactory.js"></script>
+		<script type="text/javascript" src="assets/js/core/services/fliesFactory.js"></script>
+		<script type="text/javascript" src="assets/js/controllers/home-controllers.js"></script>
+</body>
+</html>
